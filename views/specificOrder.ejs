@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        font-family:sans-serif !important;
+      }
+
+      .pdf-container {
+        padding: 10px;
+      }
+      .header-container {
+        display: block;
+      }
+      .header-item-img {
+        display: inline-block;
+        width: 13%;
+        /* border: 1px solid black; */
+      }
+      .header-title {
+        display: inline-block;
+        width: 40%;
+        vertical-align: end;
+      }
+      .header-title-text {
+        text-align: center;
+        font-size: 32px;
+        color: #00274d;
+      }
+      .pdf-font {
+        color: #333;
+        font-size: 10px;
+        font-weight: 400;
+      }
+
+      p {
+        margin-bottom: 0 !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="pdf-container">
+      <div class="header-container">
+        <div class="header-item-img">
+          <img
+            src="http://saurbhi.dev.innvonixtech.com/wp-content/uploads/2020/10/Saurbhi_logo.png"
+            alt="saurbhi"
+            height="60"
+            width="70"
+            class="pdf-font"
+          />
+        </div>
+        <div class="header-item-img">
+          <img
+            src="http://saurbhi.dev.innvonixtech.com/wp-content/uploads/2020/10/saurbhi-real-choice.png"
+            alt="saurbhi"
+            height="60"
+            width="70"
+            class="pdf-font"
+          />
+        </div>
+        <div class="header-title" style="text-align: center;">
+          <b class="header-title-text">Tax Invoice</b>
+        </div>
+        <div class="header-item-img">
+          <img
+            src="http://saurbhi.dev.innvonixtech.com/wp-content/uploads/2020/10/saurbhi-chatzpataz.png"
+            alt="saurbhi"
+            height="60"
+            width="70"
+            class="pdf-font"
+          />
+        </div>
+        <div class="header-item-img">
+          <img
+            src="http://saurbhi.dev.innvonixtech.com/wp-content/uploads/2020/10/saurbhi-swad-panjab-da.png"
+            alt="saurbhi"
+            height="60"
+            width="70"
+            class="pdf-font"
+          />
+        </div>
+      </div>
+
+      <!-- invoice number -->
+      <div
+        style="
+          display: block;
+          padding: 7px;
+          border: 1px solid #cccccc;
+          margin-top: 10px;
+        "
+      >
+        <div
+          style="
+            display: inline-block;
+            width: 32%;
+            border-right: 1px dotted #999999;
+          "
+        >
+          <span class="pdf-font">Invoice # YP2021-0056</span>
+        </div>
+
+        <div
+          style="
+            display: inline-block;
+            width: 32%;
+            border-right: 1px dotted #999999;
+          "
+        >
+          <span class="pdf-font">Invoice Date 26/09/2020</span>
+        </div>
+        <div style="display: inline-block; width: 32%">
+          <span class="pdf-font">Run No.</span>
+        </div>
+      </div>
+
+      <!-- address -->
+
+      <div class="header-container" style="margin-top: 8px">
+        <div style="display: inline-block; width: 10%; vertical-align: top">
+          <img
+            src="http://saurbhi.dev.innvonixtech.com/wp-content/uploads/2020/10/saurbhi-swad-panjab-da.png"
+            alt="saurbhi"
+            height="40"
+            width="40"
+            class="pdf-font"
+          />
+        </div>
+        <div style="display: inline-block; width: 46%">
+          <span class="pdf-font" style="text-decoration: underline"
+            ><b>From</b></span
+          >
+          <br />
+          <span class="pdf-font"><b>Shivom Enterprises Pty Ltd.</b></span>
+          <br />
+          <span class="pdf-font"><b>TD/A UV'S Impex </b></span> <br />
+          <span class="pdf-font"
+            >8 Cavasinni Place, Wetherill Park NSW 2164.</span
+          >
+          <br />
+          <span class="pdf-font">
+            <span><b>Phone:</b></span>
+            <span>0282062797</span>
+            <span>,</span>
+            <span><b>FAX:</b></span>
+            <span>0280077607</span> </span
+          ><br />
+          <span class="pdf-font">
+            <span><b>Email:</b></span>
+            <span>info@uvsimpex.com.au</span> </span
+          ><br />
+
+          <span class="pdf-font">
+            <span><b>ABN:</b></span> <span>44 125 550 325</span>
+          </span>
+        </div>
+        <div
+          style="
+            display: inline-block;
+            width: 38%;
+            vertical-align: top;
+            padding-left: 20px;
+          "
+        >
+          <span class="pdf-font" style="text-decoration: underline"
+            ><b>To</b></span
+          >
+          <br />
+          <span class="pdf-font"><b>Shri Rahm Pty Ltd</b></span> <br />
+          <span class="pdf-font"><b>Flemington Spice Mart</b></span> <br />
+          <span class="pdf-font">10/16-20 Henley Rd, Homebush West 2140.</span>
+          <br />
+          <span class="pdf-font">
+            <span><b>Phone:</b></span>
+            <span> 02 8068076</span>
+          </span>
+          <br />
+          <span class="pdf-font">
+            <span><b>Email:</b></span>
+            <span>jeyasrikrishnar@gmail.com</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- payment details -->
+
+      <div class="header-container" style="margin-top: 5px">
+        <div>
+          <span class="pdf-font"
+            ><b
+              ><span>Current Order : </span>
+              <span style="color: green">PAID</span></b
+            ></span
+          >
+        </div>
+
+        <div style="border: 1px solid grey; padding: 4px">
+          <div>
+            <div style="display: inline-block; width: 21%">
+              <span class="pdf-font">
+                <span><b>Payment By:</b></span>
+                <span style="color: green"><b>Cash</b> </span>
+              </span>
+            </div>
+
+            <div style="display: inline-block; width: 31%">
+              <span class="pdf-font">
+                <span><b> Cheque No.: </b></span><span>--</span>
+              </span>
+            </div>
+            <div style="display: inline-block; width: 31%">
+              <span class="pdf-font">
+                <span><b> Authorization Code: </b></span><span>--</span>
+              </span>
+            </div>
+          </div>
+          <table>
+            <tr style="background-color: #f3f3f3">
+              <td class="pdf-font" style="width: 120px"><b>Product Name</b></td>
+              <td class="pdf-font" style="width: 100px"><b>Product Code</b></td>
+              <td class="pdf-font" style="width: 60px">
+                <b>Product Quantity</b>
+              </td>
+              <td class="pdf-font" style="width: 80px; text-align: center">
+                <b>Order Price ($)</b>
+              </td>
+              <td class="pdf-font" style="width: 60px; text-align: center">
+                <b> Discount (%)</b>
+              </td>
+              <td class="pdf-font" style="width: 50px; text-align: center">
+                <b> Total ($)</b>
+              </td>
+              <td class="pdf-font" style="width: 40px; text-align: center">
+                <b>GST</b>
+              </td>
+            </tr>
+            <tr>
+              <td class="pdf-font">Real Choice Yogurt 1 kg</td>
+              <td class="pdf-font">RC01KGYOGURT</td>
+              <td class="pdf-font" style="text-align: right">6</td>
+              <td class="pdf-font" style="text-align: right">3.20</td>
+              <td class="pdf-font" style="text-align: right">0.00</td>
+              <td class="pdf-font" style="text-align: right">19.20</td>
+              <td class="pdf-font" style="text-align: right">No</td>
+            </tr>
+            <tr>
+              <td class="pdf-font">Real Choice Yogurt 1 kg</td>
+              <td class="pdf-font">RC01KGYOGURT</td>
+              <td class="pdf-font" style="text-align: right">6</td>
+              <td class="pdf-font" style="text-align: right">3.20</td>
+              <td class="pdf-font" style="text-align: right">0.00</td>
+              <td class="pdf-font" style="text-align: right">19.20</td>
+              <td class="pdf-font" style="text-align: right">No</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="pdf-font" style="text-align: right"><b>Total:</b></td>
+              <td class="pdf-font" style="text-align: right"><b>39.60</b></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="pdf-font" style="text-align: right"><b>GST:</b></td>
+              <td class="pdf-font" style="text-align: right"><b>00.00</b></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td colspan="2" class="pdf-font" style="text-align: right">
+                <b>Invoice Total:</b>
+              </td>
+              <td class="pdf-font" style="text-align: right"><b>39.60</b></td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- total paymentsummery -->
+
+      <div class="header-container" style="margin-top: 8px">
+        <div style="float: left; width: 30%">
+          <span class="pdf-font"><b>Total Payment Summary:</b></span>
+          <table style="border: 1px solid grey; margin-top: 3px">
+            <tr
+              style="
+                background-color: #f3f3f3;
+                border-bottom: 2px solid #cccccc;
+              "
+            >
+              <th
+                class="pdf-font"
+                style="text-align: left; width: 90px; padding: 0 5px"
+              >
+                Order
+              </th>
+              <th class="pdf-font" style="text-align: left">Amount</th>
+            </tr>
+            <tr>
+              <td class="pdf-font"><b>Current</b></td>
+              <td class="pdf-font">39.60</td>
+            </tr>
+            <tr>
+              <td class="pdf-font"><b>Grand Total:</b></td>
+              <td class="pdf-font"><b>$39.60</b></td>
+            </tr>
+          </table>
+        </div>
+        <div style="float: right; width: 70%">
+          <span class="pdf-font" style="text-decoration: underline"
+            ><b>Terms And Conditions Of Sale :</b></span
+          >
+          <br />
+          <span class="pdf-font" style="font-size: 9px !important">
+            <span><b>1</b></span>
+            <span>Dishonered Payment will be charge $25.00</span>
+          </span>
+          <br />
+          <span class="pdf-font" style="font-size: 9px !important">
+            <span><b>2</b></span>
+            <span
+              >By Signing you are agreed to read of terms & conditions of trade
+              stated back of the page (overleaf)</span
+            >
+          </span>
+          <br />
+          <span class="pdf-font" style="font-size: 9px !important">
+            <span><b>3.</b></span>
+            <span
+              >By Signing & Receiving stock you are agreed to terms & condition
+              of trade stated back of the page
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <!-- how to pay -->
+
+      <div class="header-container" style="clear: both">
+        <div>
+          <span><b>How to Pay</b></span>
+        </div>
+      </div>
+
+      <div class="header-container">
+        <div
+          style="display: inline-block; width: 40%; border: 1px solid grey; padding: 2px"
+        >
+          <span class="pdf-font" style="text-decoration: underline"
+            ><b>Bank Account Details :</b></span
+          >
+          <br />
+          <div style="padding-top: 7px">
+            <span class="pdf-font"
+              ><b>Bank:</b> National Australia Bank Ltd (NAB)</span
+            >
+            <br />
+            <span class="pdf-font"
+              ><b>Account Name :</b>Shivom Enterprises Pty Ltd</span
+            >
+            <br />
+            <span class="pdf-font"><b>BSB No :</b> 082 330</span> <br />
+            <span class="pdf-font"><b>Account No</b></span> <br />
+            <span class="pdf-font">: 1234567891234881343568686816868885 </span>
+            <br />
+            <span class="pdf-font"><b>Payment Ref. No :</b> YP2021-0056</span>
+          </div>
+        </div>
+        <div style="display: inline-block; width: 58%; height: 100%; vertical-align: sub; ">
+          <div style="display: inline-block; width: 44%; text-align: center; ">
+            <!-- customer signature -->
+            <div style="padding-bottom: 8px; margin-left: auto; margin-right: auto;">
+                
+            </div>
+            <span style="color: green;font-size: 10px; font-weight: 400;">Customer Signature</span>
+          </div>
+          <div style="display: inline-block; width: 23%; text-align: center;">
+            <div style="padding-bottom: 8px;">
+              <span class="pdf-font" style="font-size: 9px !important; font-weight: 400;">s</span>
+            </div>
+            <span style="color: green;font-size: 10px; font-weight: 400;">Signed By</span>
+          </div>
+          <div style="display: inline-block; width: 23%; text-align: center;">
+            <div style="padding-bottom: 8px;" >
+              <span class="pdf-font" style="font-size: 9px !important; font-weight: 400;">Sonit Patel</span>
+            </div>
+            <span style="color: green;font-size: 10px; font-weight: 400;">Seller Name</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

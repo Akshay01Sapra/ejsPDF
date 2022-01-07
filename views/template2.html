@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+		<style>
+			body {
+				font-family: Arial, Helvetica, sans-serif;
+			}
+			html {
+				zoom: 0.55;
+			}
+			.pdf-header {
+				min-height: 100vh;
+			}
+			.header {
+				display: flex;
+				justify-content: space-between;
+				align-items: flex-end;
+				padding: 20px 0;
+				border-bottom: 3px solid black;
+				padding: 10px 60px;
+			}
+			.header-id {
+				text-align: right;
+			}
+			.address-section {
+				display: flex;
+				padding: 10px 60px;
+				justify-content: space-between;
+				align-items: flex-start;
+			}
+			.address-section p {
+				margin-bottom: 0;
+				margin-top: 0;
+				padding-top: 3px;
+			}
+			.container {
+				padding: 10px 60px;
+			}
+
+			table {
+				width: 100%;
+				border-collapse: collapse;
+			}
+
+			th {
+				text-align: left !important;
+			}
+			table,
+			tr,
+			td,
+			th {
+				border: 1px solid #d8d8da;
+			}
+			.table-border-0,
+			.table-border-0 tbody,
+			.table-border-0 thead,
+			.table-border-0 tr,
+			.table-border-0 th,
+			.table-border-0 td {
+				border: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="pdf-header">
+			<div class="header">
+				<table class="table-border-0">
+					<tbody>
+						<tr>
+							<td>
+								<div class="img-container">
+									<img src="<%- saurbhi_logo %>" alt="" height="110" width="110" />
+									<img src="<%-  realLifeLogo %>" alt="" height="110" width="110" />
+									<img src="<%- chatzpatz %>" alt="" height="110" width="110" />
+									<img src="<%- shannPunjab %>" alt="" height="110" width="110" />
+								</div>
+							</td>
+							<td>
+								<div class="header-id">
+									<p>1 of 1</p>
+									<p>04/08/2021 05:45:PM</p>
+									<p>Order No.: <span><%=orderNumber %></span></p>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div style="text-align: center; font-size: 18px;">
+				<h3>Purchase Order</h3>
+			</div>
+
+			<div class="address-section">
+				<table class="table-border-0">
+					<tbody>
+						<tr>
+							<td style="width: 10%;">
+								<div>
+									<img src="<%- logo %>" alt="" />
+								</div>
+							</td>
+							<td style="width: 70%;">
+								<div>
+									<p>From:</p>
+									<p style="font-weight: bold;margin-top: 3px;">
+										<%=companySettings.company_name %>
+									</p>
+									<p><%=companySettings.address_1 %></p>
+									<p>
+										<span style="padding-right:30px"
+											>Phone:<span><%=companySettings.mobile %></span></span
+										>
+										<span>FAX:<span><%=companySettings.fax %></span></span>
+									</p>
+
+									<p>Email:<span><%=companySettings.email %></span></p>
+									<p>ABN: 44 125 550 325</p>
+								</div>
+							</td>
+							<td style="width: 20%;">
+								<div class="">
+									<p>To:</p>
+									<p><%=user.company_name %></p>
+									<p><%=user.shop_name %></p>
+									<p><%=user.address_1 + " "%></p>
+
+									<div style="margin-top:20px;">
+										<p>Phone: <span><%=user.mobile %></span></p>
+										<p>Email: <span><%=user.email %></span></p>
+									</div>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div class="container">
+				<table>
+					<thead>
+						<tr>
+							<th style="width: 40px; text-align:center !important;">#</th>
+							<th>Product Name</th>
+							<th>Product Qty.</th>
+							<th>No. of Carton</th>
+							<th>Order Price</th>
+							<th>Carton Price</th>
+							<th>Discount</th>
+							<th style="padding-right:5px;">Total Price</th>
+							<th>GST</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr>
+							<% var total = 0;var i = 1; var total_carton = 0;var total_unit = 0;var total_quant = 0; %>
+							<% if (productData.length > 0) { %> <% productData.forEach(product => {%> <% total = total +
+							product.total_price;total_carton = total_carton + product.no_of_carton;total_unit =
+							total_unit + product.items.unit_price;total_quant = total_quant + product.product_per_carton
+							%>
+						</tr>
+
+						<tr>
+							<td style="text-align: center">
+								<%= i %>
+							</td>
+							<% i++ %>
+							<td style="text-align: center">
+								<%=product.items.product.name + " " +product.items.product_weight %>
+							</td>
+							<td style="text-align: center"><%=product.product_per_carton %></td>
+							<td style="text-align: center"><%=product.no_of_carton %></td>
+							<td style="text-align: center"><%=product.items.unit_price %></td>
+							<td style="text-align: center"><%=product.total_price %></td>
+							<td style="text-align: center"><%=product.discount %></td>
+							<td style="text-align: center"><%=product.total_price %></td>
+							<td style="text-align: center"><%=product.items.is_gst == 1 ? "Y" : "N" %></td>
+						</tr>
+						<% });%> <% }%>
+						<tr>
+							<td></td>
+							<td style="font-weight: bold">Total</td>
+							<td style="font-weight: bold; text-align: center "><%=total_quant %></td>
+							<td style="font-weight: bold;text-align: center"><%=total_carton %></td>
+							<td style="font-weight: bold;text-align: center"><%=total_unit %></td>
+							<td></td>
+							<td></td>
+							<td style="font-weight: bold; text-align: center;padding-right: 5px"><%=total %></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td style="font-weight: bold">GST</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td style="font-weight: bold; text-align: center;padding-right: 5px">15.00</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td style="font-weight: bold;">Gross Total</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td style="font-weight: bold; text-align: center; padding-right: 5px">165.00</td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+				<h2 class="text-center mt-2 p-2">Admin Bank Details</h2>
+				<table class="table table-bordered">
+					<thead class="">
+						<tr>
+							<th>Bank Name</th>
+							<th>Account Name</th>
+							<th>Account Number</th>
+							<th>BSB Number</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><%=bankDetails.bank_name%></td>
+							<td><%=bankDetails.account_name%></td>
+							<td><%=bankDetails.account_no%></td>
+							<td><%=bankDetails.bsb_no%></td>
+						</tr>
+					</tbody>
+				</table>
+
+				<h4 style="text-decoration: underline; font-size:16px;">Terms And Conditions Of Sale :</h4>
+				<p style="text-transform: uppercase;font-size: 13px;">
+					THIS QUOTATION REMAINS VALID FOR 3 DAYS FROM THE ABOVE DATE AFTER WHICH A REVISED QUOTE MAY BE
+					NECESSARY. ANY VARIATION TO THE ABOVE QUANTITIES MAY RESULT IN A VARIATION TO THE QUOTED PRICE.
+				</p>
+				<p style="font-size: 14px">
+					I accept this quotation and certify that the above information is true and correct. I have read and
+					understand the TERMS AND CONDITIONS OF TRADE (overleaf or attached)of Shivom Enterprises Pty Ltd T/A
+					UV'S Impex which form part of, and are intended to be read in conjunction with this Quotation Form
+					and agree to be bound by these conditions. I authorise the use of my personal information as
+					detailed in the Privacy Act clause therein. I agree that if I am a director or a shareholder (owning
+					at least 15% of the shares) of the Customer I shall be personally liable for the performance of the
+					Customer¶s obligations under this contract.
+				</p>
+				<p style="font-size: 14px">
+					I authorise the supply of the Goods detailed above and certify that the above information is true
+					and correct. I have read and understand the TERMS AND CONDITIONS OF TRADE (overleaf or attached) of
+					Shivom Enterprises Pty Ltd T/A UV'S Impex which form part of, and are intended to be read in
+					conjunction with this Request To Supply Goods Form and agree to be bound by these conditions. I
+					authorise the use of my personal information as detailed in the Privacy Act clause therein. I agree
+					that if I am a director or a shareholder (owning at least 15% of the shares) of the Customer. I
+					shall be personally liable for the performance of the Customer¶s obligations under this contract.
+				</p>
+				<table class="table-border-0">
+					<thead>
+						<tr>
+							<th>
+								<p style="text-align: center; font-weight:bold">Order Submitted by</p>
+							</th>
+							<th>
+								<p style="text-align: center; font-weight:bold">Authorized by</p>
+							</th>
+							<th>
+								<p style="text-align: center; font-weight:bold">Customer Authorized</p>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<p style="margin-top: 30px;text-align: center;">Admin Shivom Enterprises Pty Ltd</p>
+							</td>
+							<td>
+								<p style="margin-top: 30px;text-align: center;">CASH SALE CASH SALE</p>
+							</td>
+							<td>
+								<p style="text-align: center; font-weight:bold">Signature</p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div style="page-break-before: always !important;" class="container">
+			<h3 style="border-top: 2px solid #d8d8da;text-align: center; border-bottom: 2px solid #d8d8da ">
+				Shivom Enterprises Pty Ltd T/A UV'S Impex – Terms & Conditions of Trade
+			</h3>
+			<div
+				class="container-fluid"
+			>
+				<%- termsConditions.content %>
+
+				<div>
+						<table cellpadding="20" cellspacing="50" style="width: 100%; border: none !important;">
+							<tbody>
+								<tr style="border: none !important;">
+									<td style="padding: 0 15px; border: none !important;">
+									Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem repellendus quam vero blanditiis quod ullam vitae. Illum inventore quas maxime rem provident obcaecati, quos saepe nisi atque molestiae? Cumque maxime nobis, unde quod dolorum similique ratione culpa magnam praesentium sapiente, sint reiciendis repellat! Dolores sunt et ipsa saepe consequuntur repellat dolorem quos magnam tempora, nostrum veritatis, hic ipsam quia consectetur cumque quas iure dignissimos maxime vero? Dolores non quia maiores architecto expedita ullam laboriosam sequi fugiat consequuntur quos aperiam aliquid mollitia impedit temporibus doloremque ea, perferendis unde aspernatur excepturi ipsa cum reprehenderit, repudiandae exercitationem? Voluptatibus eius vitae tempore ratione deleniti consectetur sint et corporis cum, ipsam magni maxime assumenda saepe laudantium repudiandae quo adipisci commodi laboriosam. Rem natus tempore molestiae delectus atque, fugit suscipit blanditiis quod odit sit enim ratione repudiandae ipsa modi cumque consectetur, nam obcaecati hic, debitis eligendi quas ducimus dolorem laborum? Ullam, necessitatibus. Voluptatum, nulla temporibus beatae consectetur sunt adipisci itaque optio eveniet. Saepe asperiores quidem natus recusandae molestiae tenetur dolore expedita dolorum voluptatum qui rem accusantium eaque corporis, dolorem aperiam ipsam maxime fugit exercitationem veritatis ipsa ducimus. Ullam, voluptatibus. Saepe totam sapiente voluptatibus quidem tenetur, quo, consequuntur eum velit esse ad consequatur nisi nemo, minima vero aliquid odit incidunt perspiciatis beatae ipsum ea. Soluta, sit officiis? Dolores nostrum quis voluptatem nihil ducimus, impedit, delectus iure saepe doloribus at explicabo magni exercitationem dignissimos. Vel minima a quos voluptas, consectetur, numquam ab adipisci temporibus officia perferendis autem voluptatibus odio qui voluptate id perspiciatis aspernatur cumque non neque obcaecati.
+									</td>
+									<td style="padding: 0 15px; border: none !important;">
+										Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, in excepturi iusto at temporibus repudiandae deleniti dolorum facilis accusantium eum hic? Nobis facere voluptatem illo numquam perspiciatis pariatur doloremque perferendis, distinctio reprehenderit aliquam dolorem, veniam sint ullam at incidunt sit eveniet magni alias hic expedita a neque tempora optio? Nemo ea sapiente assumenda obcaecati? Fuga quos cum quo magnam reiciendis id, distinctio est sequi harum nobis quisquam quam perspiciatis ut minus, tenetur, eos esse consequuntur vel inventore sapiente dolor blanditiis laboriosam expedita aut. Doloribus veniam beatae quis illo qui ipsam, quaerat iste in quasi sit temporibus numquam tempore nulla suscipit saepe modi, quidem sint architecto earum explicabo eveniet. Dignissimos quam, natus quo corporis illo iusto distinctio nemo vero consequuntur? Minus, hic perferendis saepe doloremque iusto, alias dolore voluptatum quod dolorum perspiciatis est magnam deserunt eaque at inventore possimus quo esse repellendus totam! Ipsum libero et numquam modi vero eos perferendis? Delectus incidunt repudiandae nulla ipsam. Nulla accusamus ut porro facere beatae autem exercitationem hic necessitatibus dolore ipsam impedit doloribus itaque, maiores corporis quos aliquam totam earum reprehenderit cupiditate ex in libero minus. Quasi unde, explicabo blanditiis quas excepturi vel in laudantium modi voluptatum atque debitis deleniti harum tempora veniam eos beatae. Provident aspernatur harum accusamus nostrum porro, praesentium saepe placeat nulla doloribus explicabo quo quos dignissimos blanditiis. Labore alias repellat eos qui dolorum, quidem, eum rerum hic facilis sunt earum voluptatem saepe. Velit, omnis nam, necessitatibus deleniti ducimus similique, earum rem harum neque qui debitis vel aliquid obcaecati dolorem maiores?</td>
+									<td style="padding: 0 15px;border: none !important;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium eaque aliquam rerum dolore quasi ullam nesciunt alias quisquam minima nemo quibusdam eius, consequatur ex officia recusandae a iste aspernatur sunt asperiores ipsam eum. Dignissimos eius quaerat magni, molestias maxime atque porro facere numquam, odit eos accusamus exercitationem quod rerum laboriosam sed quia iure velit. Voluptatem tempora labore explicabo praesentium reiciendis possimus corporis sint, ducimus modi enim ea, deserunt nulla, est natus eos blanditiis repellat sapiente voluptas? Et in aliquam culpa pariatur similique labore quod atque dolor. Aliquid assumenda, aspernatur modi porro obcaecati ab similique. Ratione facilis a at deleniti id? Ullam praesentium optio quod, unde natus odit aperiam molestiae beatae porro inventore asperiores quisquam eum excepturi eligendi ipsum, ex debitis sit modi corporis temporibus architecto consectetur voluptates? Iste maiores provident doloremque magni necessitatibus esse, veniam sunt quis amet molestiae non cum nobis velit culpa quo excepturi earum asperiores explicabo! Enim fugit alias explicabo a eveniet dolorum tenetur aliquam mollitia ab sint. Dolor alias deserunt a est nemo voluptates suscipit velit tempore animi reprehenderit quisquam ducimus eveniet, assumenda, eos cumque quidem pariatur consectetur veniam tempora necessitatibus facere placeat. Provident molestiae aliquam corrupti commodi unde ipsum maxime omnis neque non quaerat laboriosam consequatur architecto quia libero autem ab, nam perspiciatis repellat? Animi amet et suscipit modi quibusdam ea eaque neque aliquid provident magni. Odit porro eos, soluta molestiae possimus, aperiam molestias autem ullam eveniet deserunt, rem quidem at ea vitae eligendi placeat esse nesciunt quae est delectus distinctio illo reprehenderit. Excepturi, ipsa.
+										riosam itaque quos minus ipsum dignissimos.</td>
+								</tr>
+							</tbody>
+						</table>				
+					</div>
+			</div>
+		</div>
+	</body>
+</html>

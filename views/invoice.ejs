@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      * {
+        font-family: Helvetica, sans-serif;
+      }
+      body {
+        color: #2a2a28;
+      }
+      .container {
+        padding: 0 8px 0 50px;
+      }
+      .left-part {
+        position: fixed;
+        left: -1px;
+        top: 0;
+      }
+      .pdf-header {
+        display: block;
+        padding: 10px 0;
+      }
+      .logo-part {
+        display: inline-block;
+        width: 50%;
+        /* border: 1px solid black; */
+      }
+      .title-part {
+        display: inline-block;
+        width: 45%;
+        /* border: 1px solid black; */
+        vertical-align: bottom;
+        text-align: center;
+      }
+      .title-part span {
+        color: #ef4a4f;
+        font-size: 50px;
+        font-weight: 700;
+      }
+      .address-section {
+        display: block;
+        margin-top: 10px;
+      }
+      .address-left-section {
+        width: 50%;
+        display: inline-block;
+        /* border: 1px solid black; */
+      }
+      .address-right-section {
+        width: 45%;
+        display: inline-block;
+        /* border: 1px solid black; */
+        vertical-align: top;
+      }
+      p {
+        color: #2a2a28;
+        font-size: 11px;
+        margin-bottom: 0 !important;
+        margin-top: 3px !important;
+      }
+      .teal-lg-text {
+        font-size: 18px;
+        color: #ef4a4f;
+        font-weight: 500;
+      }
+      table {
+        border-collapse: collapse;
+        font-size: 11px;
+      }
+
+      table thead {
+        background-color: #ef4a4f;
+      }
+      table th {
+        font-weight: 400;
+        color: #fff;
+        padding: 10px 5px;
+        text-align: left;
+      }
+
+      table td {
+        padding: 8px 5px 8px 5px;
+      }
+      .section-spacer td {
+        padding-top: 20px;
+      }
+      .signature-section {
+        height: 150px;
+        width: 100%;
+        
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="left-part">
+        <img
+          src="http://localhost:3001/images/Left-Partv1.1.png"
+          height="850"
+          width="40"
+        />
+      </div>
+      <div class="pdf-header">
+        <div class="logo-part">
+          <img
+            src="http://localhost:3001/images/Logo.png"
+            height="60"
+            width="110"
+          />
+        </div>
+        <div class="title-part">
+          <span>INVOICE</span>
+        </div>
+      </div>
+
+      <div class="address-section">
+        <div class="address-left-section">
+          <p style="font-size: 14px">Bill From,</p>
+          <p class="teal-lg-text">Komal Patel</p>
+          <p>Komal Patel's Diet Studio</p>
+          <p>8160021056</p>
+          <p style="width: 75%">
+            1310 Isquare corporate park , Near CIMS hospital , Shukan cross road
+            Science City Road Sola, Ahmedabad
+          </p>
+
+          <div style="margin-top: 20px">
+            <p style="font-size: 14px">Bill To,</p>
+            <p class="teal-lg-text">Parth Shah</p>
+            <p>(Client)</p>
+          </div>
+        </div>
+
+        <div class="address-right-section">
+          <p>
+            <span style="color: #ef4a4f; font-weight: 600">DATE:</span>
+            DECEMBER 26, 2017
+          </p>
+          <p>
+            <span style="color: #ef4a4f; font-weight: 600">INVOICE NO:</span>
+            KPDS/4
+          </p>
+
+          <div style="margin-top: 30px">
+            <p style="color: #ef4a4f">PAYMENT METHOD</p>
+            <p>
+              <span style="color: #000; font-weight: 500">PAN NO:</span>
+              ALGPP5480Q
+            </p>
+            <p>
+              <span style="color: #000; font-weight: 500">EMAIL:</span>
+              dt.komalpatel@gmail.com
+            </p>
+          </div>
+
+          <div style="margin-top: 10px">
+            <p style="color: #ef4a4f">BANK DETAIL</p>
+            <p>Komal Patel</p>
+            <p>HDFC bank</p>
+            <p>A/c: 50100117715381</p>
+            <p>RTGS/NEFT/IFSC : HDFC0001675</p>
+            <p>Memnagar, Ahmedabad</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 40px">
+        <table style="width: 100%">
+          <thead>
+            <tr>
+              <th>DISCRIPTION</th>
+              <th>SESSION</th>
+              <th>RATE</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid #e3e3e3">
+              <td>Weight Loss Program</td>
+              <td>1</td>
+              <td>1000 /-</td>
+            </tr>
+            <tr class="section-spacer">
+              <td></td>
+              <td style="text-align: right; padding-right: 15px">Subtotal</td>
+              <td>1000/-</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td style="text-align: right; padding-right: 15px">GST%</td>
+              <td>NA</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td
+                style="
+                  text-align: right;
+                  padding-right: 15px;
+                  color: #000 !important;
+                  font-weight: 500;
+                "
+              >
+                GRAND TOTAL
+              </td>
+              <td>1000/-</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="signature-section"></div>
+
+      <div class="footer">
+        <div style="border-bottom: 2px solid #ef4a4f;">
+          <div style="display: inline-block; width: 50%">
+            <p>Questions?</p>
+            <p>Email us at info@dietstudio.me</p>
+            <p>or call us at 8160021056</p>
+          </div>
+          <div style="display: inline-block; width: 45%">
+            <h1 style="line-height: 0.3; text-align: right; color: #ef4a4f">
+              THANK
+            </h1>
+            <h1 style="line-height: 0.3; text-align: right; color: #ef4a4f">
+              YOU!
+            </h1>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 10px;">
+            <p>GST on health care services has been exempted vide notification no. 12/2017 dt.
+                28.06.2017 under central goods and service Act-2017.</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
